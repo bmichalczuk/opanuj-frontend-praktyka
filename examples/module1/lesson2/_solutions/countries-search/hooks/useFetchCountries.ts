@@ -6,7 +6,7 @@ import {
   fetchCountriesByLanguage,
   fetchCountriesByName,
 } from '../api/apiClient';
-import { Country, FilterType } from '../types';
+import type { Country, FilterType } from '../types';
 
 const useFetchCountries = (searchTerm: string, filterType: FilterType) => {
   const [countries, setCountries] = useState<Country[]>([]);
@@ -32,7 +32,7 @@ const useFetchCountries = (searchTerm: string, filterType: FilterType) => {
         const fetchFn =
           searchTerm === ''
             ? fetchAllCountries
-            : fetchStrategies[filterType] ?? fetchStrategies.default;
+            : (fetchStrategies[filterType] ?? fetchStrategies.default);
 
         const data = await fetchFn(searchTerm);
         setCountries(data);
