@@ -1,10 +1,12 @@
+import type { sortByType } from '../types/SortTypes';
+
 type SearchFormProps = {
   name: string;
   setName: (name: string) => void;
   gender: string;
   setGender: (gender: string) => void;
   sortOption: string;
-  setSortOption: (sortOption: string) => void;
+  setSortOption: (sortOption: sortByType) => void;
 };
 
 function SearchForm({
@@ -45,10 +47,10 @@ function SearchForm({
         Sort by
         <select
           value={sortOption}
-          onChange={(e) => setSortOption(e.target.value)}
+          onChange={(e) => setSortOption(e.target.value as sortByType)}
           className="border h-7 mt-1"
         >
-          <option value="">Initial</option>
+          <option value="initial">Initial</option>
           <option value="name">Name</option>
           <option value="created">Created Date</option>
         </select>
