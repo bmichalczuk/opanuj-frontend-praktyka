@@ -11,14 +11,6 @@ function CharacterSearchContainer() {
   const [sortOption, setSortOption] = useState<sortByType>('name');
   const characters = useCharacters(name, gender);
   const sortedCharacters = useSortedCharacters(characters, sortOption);
-  /*const sortedCharacters = [...characters].sort((a, b) => {
-    if (sortOption === 'name') {
-      return a.name.localeCompare(b.name);
-    } else if (sortOption === 'created') {
-      return new Date(a.created).getTime() - new Date(b.created).getTime();
-    }
-    return 0;
-  });*/
 
   return (
     <>
